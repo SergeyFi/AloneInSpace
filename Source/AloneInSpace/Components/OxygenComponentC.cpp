@@ -19,6 +19,8 @@ void UOxygenComponentC::AddOxygen(float OxygenAmount)
 	{
 		Oxygen = OxygenMax;
 	}
+
+	OnOxygenAdd.Broadcast(Oxygen);
 }
 
 void UOxygenComponentC::RemoveOxygen(float OxygenDamage)
@@ -28,6 +30,11 @@ void UOxygenComponentC::RemoveOxygen(float OxygenDamage)
 	if (Oxygen < 0.0f)
 	{
 		Oxygen = 0.0f;
+	}
+
+	if (Oxygen <= 0.0f)
+	{
+		OnOxygenEnd.Broadcast(Oxygen);
 	}
 }
 

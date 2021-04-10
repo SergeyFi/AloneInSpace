@@ -6,6 +6,7 @@
 #include "Components/ActorComponent.h"
 #include "OxygenComponentC.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOxygenDelegate, float, Oxygen);
 
 UCLASS( ClassGroup=(Custom), meta=(IsBlueprintBase = "true") )
 class ALONEINSPACE_API UOxygenComponentC : public UActorComponent
@@ -52,4 +53,10 @@ protected:
 	void StartOxygenSpending();
 
 	FTimerHandle OxygenSpendTimer;
+
+	UPROPERTY(BlueprintAssignable, Category = "Oxygen")
+	FOxygenDelegate OnOxygenEnd;
+
+	UPROPERTY(BlueprintAssignable, Category = "Oxygen")
+	FOxygenDelegate OnOxygenAdd;
 };
