@@ -74,5 +74,5 @@ void UOxygenComponentC::OxygenSpend()
 
 void UOxygenComponentC::StartOxygenSpending()
 {
-	GetWorld()->GetTimerManager().SetTimer(OxygenSpendTimer, this, &UOxygenComponentC::OxygenSpend, OxygenSpendingRate);
+	GetWorld()->GetTimerManager().SetTimer(OxygenSpendTimer, this, &UOxygenComponentC::OxygenSpend, OxygenSpendingRate, true);
 }
