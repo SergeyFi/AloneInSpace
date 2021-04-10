@@ -7,7 +7,7 @@
 #include "HealthComponentC.generated.h"
 
 
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS( ClassGroup=(Custom), meta=(IsBlueprintBase = "true") )
 class ALONEINSPACE_API UHealthComponentC : public UActorComponent
 {
 	GENERATED_BODY()
