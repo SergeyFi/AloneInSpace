@@ -14,9 +14,16 @@ class ALONEINSPACE_API UItemData : public UObject
 	GENERATED_BODY()
 
 public:
-	
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	FText Name;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	int32 Count;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	bool bIsStackable;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	TSubclassOf<UItemCategory> ItemCategory;
 };
