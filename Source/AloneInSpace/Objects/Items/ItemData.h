@@ -17,6 +17,8 @@ class ALONEINSPACE_API UItemData : public UObject
 
 public:
 
+	UItemData();
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	FText Name;
 
@@ -29,6 +31,9 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	TSubclassOf<UItemCategory> ItemCategory;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UItemAction* Action;
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	TSubclassOf<UItemAction> ActionClass;
 };

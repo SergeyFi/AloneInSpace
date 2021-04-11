@@ -3,3 +3,10 @@
 
 #include "ItemData.h"
 
+UItemData::UItemData()
+{
+	if (ActionClass && GetOuter())
+	{
+		Action = NewObject<UItemAction>(GetOuter(), ActionClass);
+	}
+}
