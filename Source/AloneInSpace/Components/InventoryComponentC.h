@@ -31,6 +31,12 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Inventory")
 	void AddItemByActor(AActor* ItemOwner);
 
+	UFUNCTION(BlueprintPure, Category = "Inventory")
+	TArray<UItemData*> GetItemsByCategory(TSubclassOf<UItemCategory> ItemCategory);
+
+	UFUNCTION(BlueprintPure, Category = "Inventory")
+	TArray<TSubclassOf<UItemCategory>> GetCategories();
+
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;

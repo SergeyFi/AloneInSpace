@@ -14,28 +14,30 @@ UInventoryComponentC::UInventoryComponentC()
 
 void UInventoryComponentC::AddItem(UItemData* ItemData)
 {
-	if (ItemData->bIsStackable)
+	if (ItemsMap.Contains(ItemData->ItemCategory))
 	{
-		for (auto Item : ItemsMap[ItemData->ItemCategory].Items)
+		if (ItemData->bIsStackable)
 		{
-			if (Item->GetClass() == ItemData->GetClass())
+			for (auto Item : ItemsMap[ItemData->ItemCategory].Items)
 			{
-				Item->Count += ItemData->Count;
-				return;
+				if (Item->GetClass() == ItemData->GetClass())
+				{
+					Item->Count += ItemData->Count;
+					return;
+				}
 			}
+		}
+		else
+		{
+			ItemsMap[ItemData->ItemCategory].Items.Add(ItemData);
 		}
 	}
 	else
 	{
-		if (ItemsMap.Contains(ItemData->ItemCategory))
-		{
-			ItemsMap[ItemData->ItemCategory].Items.Add(ItemData);
-		}
-		else
-		{
-			ItemsMap.Add(ItemData->ItemCategory, {{ItemData}});
-		}
+		ItemsMap.Add(ItemData->ItemCategory, {{ItemData}});
 	}
+	
+
 }
 
 void UInventoryComponentC::AddItemByActor(AActor* ItemOwner)
@@ -48,6 +50,24 @@ void UInventoryComponentC::AddItemByActor(AActor* ItemOwner)
 
 		ItemOwner->Destroy();
 	}
+}
+
+TArray<UItemData*> UInventoryComponentC::GetItemsByCategory(TSubclassOf<UItemCategory> ItemCategory)
+{
+	if (ItemsMap.Contains(ItemCategory))
+	{
+		return ItemsMap[ItemCategory].Items;
+	}
+
+	return {};
+}
+
+TArray<TSubclassOf<UItemCategory>> UInventoryComponentC::GetCategories()
+{
+	TArray<TSubclassOf<UItemCategory>>  Keys;
+	ItemsMap.GetKeys(Keys);
+	
+	return Keys;
 }
 
 
