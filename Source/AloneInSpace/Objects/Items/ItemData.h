@@ -3,6 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
+
+#include "ItemAction.h"
 #include "UObject/NoExportTypes.h"
 #include "AloneInSpace/Objects/Items/ItemCategory.h"
 #include "ItemData.generated.h"
@@ -26,4 +28,7 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	TSubclassOf<UItemCategory> ItemCategory;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UItemAction* Action;
 };
