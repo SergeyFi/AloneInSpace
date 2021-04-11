@@ -13,5 +13,8 @@ UCLASS(Blueprintable)
 class ALONEINSPACE_API UItemCategory : public UObject
 {
 	GENERATED_BODY()
+public:
 	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Category")
+	FText Name;
 };
