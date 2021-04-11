@@ -37,6 +37,9 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Inventory")
 	TArray<TSubclassOf<UItemCategory>> GetCategories();
 
+	UFUNCTION(BlueprintCallable, Category = "Inventory")
+	void RemoveItem(TSubclassOf<UItemCategory> ItemCategory, UItemData* ItemData);
+
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;

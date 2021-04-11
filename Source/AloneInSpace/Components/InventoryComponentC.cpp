@@ -70,6 +70,14 @@ TArray<TSubclassOf<UItemCategory>> UInventoryComponentC::GetCategories()
 	return Keys;
 }
 
+void UInventoryComponentC::RemoveItem(TSubclassOf<UItemCategory> ItemCategory, UItemData* ItemData)
+{
+	if (ItemsMap.Contains(ItemCategory))
+	{
+		ItemsMap[ItemCategory].Items.Remove(ItemData);
+	}
+}
+
 
 // Called when the game starts
 void UInventoryComponentC::BeginPlay()
